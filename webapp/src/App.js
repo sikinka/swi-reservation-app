@@ -1,6 +1,7 @@
 import React from "react";
+import reser from './reservation.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Button, Card, Col, Container, Form, ListGroup, Row, Alert} from "react-bootstrap";
+import {Button, Card, Col, Container, Form, ListGroup, Image, Alert} from "react-bootstrap";
 
 
 
@@ -146,153 +147,179 @@ class App extends React.Component {
 
         return (
             <Container >
-                <h1 className="text-primary"><b>Rezervace pacientů</b></h1>
-
-                <Card>
-                    <Card.Body>
-                        <Card.Title className="text-primary fs-3">Vytvořit rezervaci</Card.Title>
-                        <Form onSubmit={this.createNew}>
-                            <Form.Group className="mb-3" controlId="firstNameId">
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Vložte jméno"
-                                    value={this.state.name}
-                                    onChange={(e) => this.onChange(e.target.value, 'name')}
-                                />
-                            </Form.Group>
-
-                            <Form.Group className="mb-3" controlId="lastNameId">
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Vložte příjmení"
-                                    value={this.state.last_name}
-                                    onChange={(e) => this.onChange(e.target.value, 'last_name')}
-                                />
-                            </Form.Group>
+                <Container className="text-center">
 
 
-                            <Form.Group className="mb-3" controlId="reasonNameID">
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Název důvodu"
-                                  value={this.state.name2}
-                                   onChange={(e) => this.onChange(e.target.value, 'name2')}
-                                />
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="descriptionID">
-                                <Form.Control
-                                    type="text"
-                                    placeholder="Popis důvodu"
-                                    value={this.state.description}
-                                    onChange={(e) => this.onChange(e.target.value, 'description')}
-                                />
-                            </Form.Group>
+                    <h1 className='m-5'>Rezervujte si termín prohlídky!</h1>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>Rok</Form.Label>
-                                <Form.Select>
-                                    <option>2022</option>
-                                    <option>2023</option>
-                                    <option>2024</option>
-                                    <option>2025</option>
-                                    value={this.state.year}
-                                    onChange={(e) => this.onChange(e.target.value, 'year')}
-                                </Form.Select>
-                            </Form.Group>
 
-                            <Form.Group className="mb-3">
-                                <Form.Label>Měsíc</Form.Label>
-                                <Form.Select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                    value={this.state.month}
-                                    onChange={(e) => this.onChange(e.target.value, 'month')}
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Den</Form.Label>
-                                <Form.Select>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                    <option>13</option>
-                                    <option>14</option>
-                                    <option>15</option>
-                                    <option>16</option>
-                                    <option>17</option>
-                                    <option>18</option>
-                                    <option>19</option>
-                                    <option>20</option>
-                                    <option>21</option>
-                                    <option>22</option>
-                                    <option>23</option>
-                                    <option>24</option>
-                                    <option>25</option>
-                                    <option>26</option>
-                                    <option>27</option>
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                    value={this.state.day}
-                                    onChange={(e) => this.onChange(e.target.value, 'day')}
-                                </Form.Select>
-                            </Form.Group>
-
-                            <Form.Group className="mb-3">
-                                <Form.Label>Čas</Form.Label>
-                                <Form.Select>
-                                    <option>8:00:00</option>
-                                    <option>9:00:00</option>
-                                    <option>10:00:00</option>
-                                    <option>11:00:00</option>
-                                    <option>12:00:00</option>
-                                    <option>13:00:00</option>
-                                    <option>14:00:00</option>
-                                    <option>15:00:00</option>
-                                    <option>16:00:00</option>
-                                    <option>17:00:00</option>
-                                    <option>18:00:00</option>
-                                    value={this.state.hour}
-                                    onChange={(e) => this.onChange(e.target.value, 'hour')}
-
-                                </Form.Select>
-                            </Form.Group>
+                    <Button className='btn-reservation btn-primary mb-5 fs-5 p-3' href='#rezervace' variant='primary'> Rezervovat termín! </Button>
 
 
 
 
+                </Container>
+                <Image className='mt-5 mb-5' src={reser}></Image>
 
-                            <Button variant="primary" type="submit">Create or Update</Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
+<section id="rezervace">
+    <h1 className="text-primary"><b>Rezervace pacientů</b></h1>
 
-                <Card >
-                    <DisplayError>{this.state.error}</DisplayError>
-                    <DisplayItems>{this.state.data}</DisplayItems>
-                </Card>
+    <Card className="mb-5">
+        <Card.Body>
+            <Card.Title className="text-primary fs-3">Vytvoření nové rezervace</Card.Title>
+            <Form onSubmit={this.createNew}>
+                <Form.Group className="mb-3" controlId="firstNameId">
+                    <Form.Control
+                        type="text"
+                        placeholder="Vložte jméno"
+                        value={this.state.name}
+                        onChange={(e) => this.onChange(e.target.value, 'name')}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="lastNameId">
+                    <Form.Control
+                        type="text"
+                        placeholder="Vložte příjmení"
+                        value={this.state.last_name}
+                        onChange={(e) => this.onChange(e.target.value, 'last_name')}
+                    />
+                </Form.Group>
+
+
+                <Form.Group className="mb-3" controlId="reasonNameID">
+                    <Form.Control
+                        type="text"
+                        placeholder="Název důvodu"
+                        value={this.state.name2}
+                        onChange={(e) => this.onChange(e.target.value, 'name2')}
+                    />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="descriptionID">
+                    <Form.Control
+                        type="text"
+                        placeholder="Popis důvodu"
+                        value={this.state.description}
+                        onChange={(e) => this.onChange(e.target.value, 'description')}
+                    />
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Rok</Form.Label>
+                    <Form.Select>
+                        <option>2022</option>
+                        <option>2023</option>
+                        <option>2024</option>
+                        <option>2025</option>
+                        value={this.state.year}
+                        onChange={(e) => this.onChange(e.target.value, 'year')}
+                    </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Měsíc</Form.Label>
+                    <Form.Select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        value={this.state.month}
+                        onChange={(e) => this.onChange(e.target.value, 'month')}
+                    </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Den</Form.Label>
+                    <Form.Select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10</option>
+                        <option>11</option>
+                        <option>12</option>
+                        <option>13</option>
+                        <option>14</option>
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                        <option>23</option>
+                        <option>24</option>
+                        <option>25</option>
+                        <option>26</option>
+                        <option>27</option>
+                        <option>28</option>
+                        <option>29</option>
+                        <option>30</option>
+                        <option>31</option>
+                        value={this.state.day}
+                        onChange={(e) => this.onChange(e.target.value, 'day')}
+                    </Form.Select>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <Form.Label>Čas</Form.Label>
+                    <Form.Select>
+                        <option>8:00:00</option>
+                        <option>9:00:00</option>
+                        <option>10:00:00</option>
+                        <option>11:00:00</option>
+                        <option>12:00:00</option>
+                        <option>13:00:00</option>
+                        <option>14:00:00</option>
+                        <option>15:00:00</option>
+                        <option>16:00:00</option>
+                        <option>17:00:00</option>
+                        <option>18:00:00</option>
+                        value={this.state.hour}
+                        onChange={(e) => this.onChange(e.target.value, 'hour')}
+
+                    </Form.Select>
+                </Form.Group>
+
+
+
+
+
+                <Button variant="primary" type="submit">Vytvořit rezervaci</Button>
+            </Form>
+        </Card.Body>
+    </Card>
+
+</section>
+
+
+               <section id="pacienti">
+                   <Card >
+                       <DisplayError>{this.state.error}</DisplayError>
+                       <DisplayItems>{this.state.data}</DisplayItems>
+                   </Card>
+               </section>
+
+
+
+                <footer className="bg-primary text-center">Tomáš Sikora, Daniel Chlopčík SWI1 rezervační aplikace</footer>
             </Container>
+
+
         );
     }
 }
